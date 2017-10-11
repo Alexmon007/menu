@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{menuItem.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="height: 95%">
+    <img src="http://lorempixel.com/400/200/food/"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{menuItem.name}}
+      </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely
+        responsible for bringing the music to a mass audience.
+      </p>
+      <ion-row no-padding>
+        <ion-col text-left no-padding>
+          <ion-item no-padding>
+            <ion-icon name='cash'></ion-icon>
+            <ion-icon name='card'></ion-icon>
+            Price: $ {{menuItem.price}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+          <ion-item>
+            <ion-label color="primary" stacked>Order Quantity</ion-label>
+            <ion-input type="number" placeholder="Quantity" [(ngModel)]="orderLineItem.quantity" name="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button icon-right>
+            $ {{orderLineItem.quantity*orderLineItem.item.price}}
+          </button>
+
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

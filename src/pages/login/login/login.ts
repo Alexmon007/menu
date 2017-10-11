@@ -1,0 +1,76 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams,Loading,
+  LoadingController,   AlertController} from 'ionic-angular';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {EmailValidator} from "../validators/email.validator";
+import {UserService} from "../../../services/user.service";
+import {TabsPage} from "../../main/tabs/tabs";
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@Component({
+  selector: 'login',
+  templateUrl: './login.html',
+})
+export class LoginPage {
+  public loginForm: FormGroup;
+  public loading: Loading;
+
+  constructor(public navCtrl: NavController,
+              public loadingCtrl: LoadingController,
+              public alertCtrl: AlertController,
+              public authProvider: UserService,
+              public formBuilder: FormBuilder) {
+    this.loginForm = formBuilder.group({
+      email: ['',
+        Validators.compose([Validators.required, EmailValidator.isValid])],
+      password: ['',
+        Validators.compose([Validators.minLength(6), Validators.required])]
+    });
+    this.loading = loadingCtrl.create();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+
+  loginUser(): void {
+    if (!this.loginForm.valid) {
+      console.log(this.loginForm.value);
+    } else {
+      this.authProvider.loginUser(this.loginForm.value.email,
+        this.loginForm.value.password)
+        .then(authData => {
+          this.loading.dismiss().then(() => {
+            this.navCtrl.setRoot(TabsPage);
+          });
+        }, error => {
+          this.loading.dismiss().then(() => {
+            let alert = this.alertCtrl.create({
+              message: error.message,
+              buttons: [
+                {
+                  text: "Ok",
+                  role: 'cancel'
+                }
+              ]
+            });
+            alert.present();
+          })
+        });
+    }
+  }
+  goToSignup(): void {
+    // this.navCtrl.push('SignupPage');
+  }
+
+  goToResetPassword(): void {
+    // this.navCtrl.push('ResetPasswordPage');
+  }
+}
+

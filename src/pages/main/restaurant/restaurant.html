@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{restaurant.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager>
+
+    <ion-slide>
+      <h2><ion-card style="height: 80%">
+
+        <img src="http://lorempixel.com/400/200/"/>
+
+        <ion-card-content>
+          <ion-card-title>
+            {{restaurant.name}}
+          </ion-card-title>
+          <p>
+            {{restaurant.description}}
+          </p>
+          <p>Chinese</p>
+          <p>
+            {{restaurant.address.name}}
+          </p>
+        </ion-card-content>
+
+        <ion-item>
+          <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
+          Followers
+          <ion-badge item-end>260k</ion-badge>
+        </ion-item>
+
+      </ion-card>
+      </h2>
+    </ion-slide>
+
+    <ion-slide class="card-background-page" style="overflow:auto;">
+    <h2>Menu</h2>
+    <ion-card *ngFor="let menuItem of restaurant.menu">
+      <a (click)="this.goToMenuItemDetails(menuItem)">
+      <img src="http://lorempixel.com/400/200/food/"/>
+      <div class="card-title">{{menuItem.name}}</div>
+      <div class="card-subtitle">$ {{menuItem.price}}</div>
+      </a>
+    </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
