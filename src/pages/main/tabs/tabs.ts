@@ -4,14 +4,16 @@ import { AboutPage } from '../about/about';
 import { SearchPage } from '../search/search';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
+import {SalePage} from "../sale/sale";
+import {CartPage} from "../cart/cart";
 
 @Component({
   templateUrl:  './tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
+  tabSaleRoot = SalePage;
+  tabCartRoot = CartPage;
   tab3Root = ContactPage;
   tabSearchRoot = SearchPage;
 

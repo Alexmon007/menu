@@ -15,6 +15,8 @@ import {UserService} from '../services/user.service';
 import {MainModule} from "../pages/main/main.module";
 import {RestaurantService} from "../services/restaurant.service";
 import {AngularFireDatabaseModule} from "angularfire2/database";
+import {EnumKeysPipe} from "../pipes/enum-keys.pipe";
+import {SalesService} from "../services/sales.service";
 
 
 let config = {
@@ -29,6 +31,7 @@ let config = {
 @NgModule({
   declarations: [
     MyApp,
+    EnumKeysPipe,
   ],
   imports: [
     BrowserModule,
@@ -44,12 +47,16 @@ let config = {
   entryComponents: [
     MyApp,
   ],
+  exports:[
+    EnumKeysPipe
+  ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
-    RestaurantService
+    RestaurantService,
+    SalesService
   ]
 })
 export class AppModule {}

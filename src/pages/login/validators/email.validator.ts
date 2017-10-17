@@ -3,9 +3,9 @@
  */
 import { FormControl } from '@angular/forms';
 
-export class EmailValidator {
+export class CustomValidator {
 
-  static isValid(control: FormControl){
+  static isEmailValid(control: FormControl){
     const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
       .test(control.value);
 

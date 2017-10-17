@@ -9,7 +9,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {RestaurantService} from "../../../services/restaurant.service";
 import {RestaurantItem} from "../../../models/RestaurantItem";
 import {MenuItem} from "../../../models/MenuItem";
-import {OrderLineIItem} from "../../../models/OrderLineIItem";
+import {LineItem} from "../../../models/LineItem";
 
 /**
  * Generated class for the SearchPage page.
@@ -25,10 +25,10 @@ import {OrderLineIItem} from "../../../models/OrderLineIItem";
 export class MenuItemPage {
 
   menuItem:MenuItem;
-  orderLineItem:OrderLineIItem;
+  orderLineItem:LineItem;
   constructor(public navCtrl: NavController, public navParams: NavParams,private restService:RestaurantService) {
     this.menuItem = navParams.get('menuItem');
-    this.orderLineItem= new OrderLineIItem();
+    this.orderLineItem= new LineItem();
     this.orderLineItem.item= this.menuItem;
     console.log(this.menuItem);
   }

@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<ion-header>
 
-</body>
-</html>
+  <ion-navbar>
+    <ion-title>Set Language and Currency</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <ion-item>
+      <ion-label stacked>Currency</ion-label>
+      <ion-select [(ngModel)]="user.currency">
+        <ion-option *ngFor="let type of currencyTypes | enumKeys" [value]="type.key">{{type.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Language</ion-label>
+      <ion-select [(ngModel)]="user.language">
+        <ion-option *ngFor="let type of languageTypes | enumKeys" [value]="type.key">{{type.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button block (click)="goToMain()">
+      Register
+    </button>
+
+</ion-content>

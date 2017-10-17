@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Loading,
   LoadingController,   AlertController} from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import {EmailValidator} from "../validators/email.validator";
+import {CustomValidator} from "../validators/email.validator";
 import {UserService} from "../../../services/user.service";
 import {TabsPage} from "../../main/tabs/tabs";
+import {RegisterPage} from "../register/register";
 
 /**
  * Generated class for the LoginPage page.
@@ -28,7 +29,7 @@ export class LoginPage {
               public formBuilder: FormBuilder) {
     this.loginForm = formBuilder.group({
       email: ['',
-        Validators.compose([Validators.required, EmailValidator.isValid])],
+        Validators.compose([Validators.required, CustomValidator.isEmailValid])],
       password: ['',
         Validators.compose([Validators.minLength(6), Validators.required])]
     });
@@ -66,7 +67,7 @@ export class LoginPage {
     }
   }
   goToSignup(): void {
-    // this.navCtrl.push('SignupPage');
+    this.navCtrl.push(RegisterPage);
   }
 
   goToResetPassword(): void {

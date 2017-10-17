@@ -3,10 +3,13 @@
  */
 import {Injectable} from '@angular/core';
 import firebase from 'firebase';
+import {AngularFireDatabase} from 'angularfire2/database'
+import {User} from "../models/User";
 
 @Injectable()
 export class UserService {
-  constructor() {
+  private userRef = '/userProfile';
+  constructor(private afDb:AngularFireDatabase) {
   }
 
   loginUser(email: string, password: string): firebase.Promise<any> {
@@ -18,11 +21,10 @@ export class UserService {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(newUser => {
-        firebase
-          .database()
-          .ref('/userProfile')
-          .child(newUser.uid)
-          .set({email: email});
+        let user= new User(newUser.email);
+        return this.afDb.object(`${this.userRef}/${newUser.uid}`).set(user).then(()=>{
+          return this.afDb.object(`${this.userRef}/${newUser.uid}`);
+        });
       });
   }
   resetPassword(email: string): firebase.Promise<void> {

@@ -11,6 +11,8 @@ import {IonicPageModule} from "ionic-angular";
 import {RestaurantPage} from "./restaurant/restaurant";
 import {MenuItemPage} from "./menu-item/menu-item";
 import {FormsModule} from "@angular/forms";
+import {SalePage} from "./sale/sale";
+import {CartPage} from "./cart/cart";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {FormsModule} from "@angular/forms";
     TabsPage,
     SearchPage,
     RestaurantPage,
-    MenuItemPage
+    MenuItemPage,
+    SalePage,
+    CartPage
   ],
   imports: [
     IonicPageModule,
@@ -33,7 +37,9 @@ import {FormsModule} from "@angular/forms";
     TabsPage,
     SearchPage,
     RestaurantPage,
-    MenuItemPage
+    MenuItemPage,
+    SalePage,
+    CartPage
   ],
 })
 export class MainModule {}
