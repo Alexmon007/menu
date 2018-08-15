@@ -7,18 +7,26 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Search</ion-title>
+    <ion-title>Buscar</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-grid>
+  <ion-row align-items-center>
+    <ion-col col-10>
+      <ion-searchbar (ionInput)="search($event)" no-padding></ion-searchbar>
+    </ion-col>
+    <ion-col col-1><button ion-fab><ion-icon name="locate"></ion-icon></button></ion-col>
+  </ion-row>
+  </ion-grid>
+
   <ion-list>
-  <ion-item *ngFor="let restaurant of filteredRestaurants">
+  <ion-item *ngFor="let restaurant of filteredRestaurants; let i = index" [attr.data-index]="i">
     <ion-thumbnail item-start>
-      <img src="http://lorempixel.com/400/200/">
+      <img src="http://lorempixel.com/400/200/nightlife/{{i}}">
     </ion-thumbnail>
     <h2>{{restaurant.name}}</h2>
     <p>{{restaurant.restaurantType}}</p>

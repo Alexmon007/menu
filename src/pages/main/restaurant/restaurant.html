@@ -37,13 +37,25 @@
 
     <ion-slide class="card-background-page" style="overflow:auto;">
     <h2>Menu</h2>
-    <ion-card *ngFor="let menuItem of restaurant.menu">
+    <ion-card *ngFor="let menuItem of restaurant.menu; let i = index" [attr.data-index]="i">
       <a (click)="this.goToMenuItemDetails(menuItem)">
-      <img src="http://lorempixel.com/400/200/food/"/>
+      <img src="http://lorempixel.com/400/200/food/{{i}}"/>
       <div class="card-title">{{menuItem.name}}</div>
       <div class="card-subtitle">$ {{menuItem.price}}</div>
       </a>
     </ion-card>
+    </ion-slide>
+    <ion-slide *ngIf="restaurant.reservationsSchedule">
+      <ion-card>
+        <img src="http://lorempixel.com/400/200/"/>
+        <ion-item>Reservaciones</ion-item>
+        <ion-list no-lines>
+          <button ion-item *ngFor="let schedule of restaurant.reservationsSchedule.hours">
+            {{ schedule }}
+          </button>
+        </ion-list>
+      </ion-card>
+
     </ion-slide>
   </ion-slides>
 </ion-content>

@@ -6,7 +6,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="cart">
+  <ion-list *ngFor="let restaurant of cart.itemsByRestaurant">
+    <ion-list-header style="font-size: large; color: black; font-weight: 900;">
+      {{restaurant.restaurant.title}}
+    </ion-list-header>
+    <ion-item *ngIf="restaurant.reservation" style="font-weight: 500;">Reservación en {{restaurant.reservation}}</ion-item>
+    <ion-item *ngIf="!restaurant.reservation" style="font-weight: 500;"><button ion-button item-end>Agregar Reservación</button></ion-item>
+    <ion-item *ngFor="let item of restaurant.items">
+      <ion-avatar item-start>
+        <img src="http://lorempixel.com/400/200/food/">
+      </ion-avatar>
+      <div item-start>{{item.item.name}} - (Qty:{{item.quantity}})</div>
+      <div >{{item.totalPrice}}</div>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-icon name='cash'></ion-icon>
+    <ion-icon name='card'></ion-icon>
+    Total $ : {{cart.total}}
+    <button ion-button item-end>
+      Pagar
+    </button>
+  </ion-item>
 
 </ion-content>
 

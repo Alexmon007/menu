@@ -5,48 +5,48 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <!--<ion-card>-->
 
-  <ion-item>
-    <h1>Compra 2 sushis california por menos!</h1>
-    <p>Restaurante - Katana</p>
-  </ion-item>
-  <img src="http://lorempixel.com/400/200/food">
+  <!--<ion-item>-->
+    <!--<h1>Compra 2 sushis california por menos!</h1>-->
+    <!--<p>Restaurante - Katana</p>-->
+  <!--</ion-item>-->
+  <!--<img src="http://lorempixel.com/400/200/food">-->
 
-  <ion-card-content>
-    <p>Bacon ipsum dolor amet jerky short ribs swine bresaola pig. Kevin turkey alcatra, pork chop ball tip cupim pancetta pastrami ham beef. Chuck jerky chicken, swine andouille pancetta boudin ground round bacon ball tip pork chop turkey filet mignon. Beef ribs porchetta pancetta ball tip tri-tip t-bone shank</p>
-    <p>Valido hasta Septiembre 2017</p>
-  </ion-card-content>
+  <!--<ion-card-content>-->
+    <!--<p>Bacon ipsum dolor amet jerky short ribs swine bresaola pig. Kevin turkey alcatra, pork chop ball tip cupim pancetta pastrami ham beef. Chuck jerky chicken, swine andouille pancetta boudin ground round bacon ball tip pork chop turkey filet mignon. Beef ribs porchetta pancetta ball tip tri-tip t-bone shank</p>-->
+    <!--<p>Valido hasta Septiembre 2017</p>-->
+  <!--</ion-card-content>-->
 
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        11h ago
-      </ion-note>
-    </ion-col>
-  </ion-row>
-  </ion-card>
+  <!--<ion-row>-->
+    <!--<ion-col>-->
+      <!--<button ion-button icon-left clear small>-->
+        <!--<ion-icon name="thumbs-up"></ion-icon>-->
+        <!--<div>12 Likes</div>-->
+      <!--</button>-->
+    <!--</ion-col>-->
+    <!--<ion-col>-->
+      <!--<button ion-button icon-left clear small>-->
+        <!--<ion-icon name="text"></ion-icon>-->
+        <!--<div>4 Comments</div>-->
+      <!--</button>-->
+    <!--</ion-col>-->
+    <!--<ion-col center text-center>-->
+      <!--<ion-note>-->
+        <!--11h ago-->
+      <!--</ion-note>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
+  <!--</ion-card>-->
 
 
-  <ion-card *ngFor="let sale of sales">
+  <ion-card *ngFor="let sale of sales; let i = index" [attr.data-index]="i">
 
     <ion-item>
       <h1>{{sale.title}}</h1>
       <p>Restaurante - {{sale.restaurant.title}}</p>
     </ion-item>
-    <img src="http://lorempixel.com/400/200/food">
+    <img src="http://lorempixel.com/400/200/food/{{i}}">
 
     <ion-card-content>
       <p>Contenido de la oferta</p>
@@ -59,6 +59,22 @@
       <ion-col>
         <button ion-button icon-left clear small>
           Agregar al carrito
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>

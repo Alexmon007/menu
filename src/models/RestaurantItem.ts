@@ -9,6 +9,7 @@ export class RestaurantItem{
   public menu: MenuItem[];
   public description: String[];
   public address: Address;
+  public reservationsSchedule:any;
 }
 export class Address{
   public name:String;

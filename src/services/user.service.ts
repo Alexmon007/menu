@@ -3,7 +3,7 @@
  */
 import {Injectable} from '@angular/core';
 import firebase from 'firebase';
-import {AngularFireDatabase} from 'angularfire2/database'
+import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database'
 import {User} from "../models/User";
 
 @Injectable()
@@ -32,5 +32,8 @@ export class UserService {
   }
   logoutUser(): firebase.Promise<void> {
   return firebase.auth().signOut();
+  }
+  getCurrentCart() : FirebaseObjectObservable<any>{
+    return this.afDb.object(`${this.userRef}/${firebase.auth().currentUser.uid}`);
   }
 }
